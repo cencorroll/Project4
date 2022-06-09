@@ -8,10 +8,11 @@ class Fitness(models.Model):
     'groups.Group', # model that this field is related to
     related_name='fitness'
   )
-  description = models.CharField(max_length=3000, default=None)
-  how_to_do = models.CharField(max_length=3000, default=None)
+  description = models.TextField(max_length=3000, default=None)
+  how_to_do = models.TextField(max_length=3000, default=None)
   sets = models.PositiveBigIntegerField(default=None)
   image = models.CharField(max_length=3000, default=None)
+  video = models.CharField(max_length=300)
   expertopinions = models.ManyToManyField(
     'expertopinions.ExpertOpinion', # model that this field is related to
     related_name='fitness'

@@ -1,5 +1,5 @@
 from .common import GroupSerializer
-from fitness.serializers.common import FitnessSerializer
+from exercises.serializers.common import ExercisesSerializer
 
 class PopulatedGroupSerializer(GroupSerializer):
-  fitness = FitnessSerializer(many=True)
+  exercises = ExercisesSerializer(many=True)

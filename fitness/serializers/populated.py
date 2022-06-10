@@ -5,7 +5,6 @@
 
 from .common import FitnessSerializer # import FitnessSerializer to inherit
 from groups.serializers.populated import PopulatedGroupSerializer
-from expertopinions.serializers.populated import PopulatedExpertOpinionSerializer
 
 from groups.serializers.common import GroupSerializer
 
@@ -13,4 +12,3 @@ from groups.serializers.common import GroupSerializer
 class PopulatedFitnessSerializer(FitnessSerializer):
   # one task in this class is to define our field to populate
   groups = PopulatedGroupSerializer(many=True)
-  expertopinions = PopulatedExpertOpinionSerializer(many=True)

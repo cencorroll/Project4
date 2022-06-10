@@ -13,10 +13,7 @@ class Fitness(models.Model):
   sets = models.PositiveBigIntegerField(default=None)
   image = models.CharField(max_length=3000, default=None)
   video = models.CharField(max_length=300)
-  expertopinions = models.ManyToManyField(
-    'expertopinions.ExpertOpinion', # model that this field is related to
-    related_name='fitness'
-  )
+  expert_opinions = models.TextField(max_length=3000, default=None)
 
   def __str__(self):
     return f'{self.name}'

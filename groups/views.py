@@ -8,6 +8,6 @@ from .models import Group
 class GroupListView(APIView):
 
   def get(self, _request):
-    genres = Group.objects.all()
-    serialized_genres = PopulatedGroupSerializer(genres, many=True)
-    return Response(serialized_genres.data)
+    groups = Group.objects.all()
+    serialized_groups = PopulatedGroupSerializer(groups, many=True)
+    return Response(serialized_groups.data)

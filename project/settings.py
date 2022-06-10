@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'fitness',
     'groups',
-    'expertopinions'
+    'workouts'
 ]
 
 MIDDLEWARE = [

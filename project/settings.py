@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'exercises',
     'groups',
-    'workouts'
+    'workouts',
+    'jwt_auth'
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'jwt_auth.User'

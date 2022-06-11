@@ -4,13 +4,14 @@ from django.db import models
 
 class Workout(models.Model):
   name = models.CharField(max_length=100, default=None)
-  groups = models.ForeignKey(
+  groups = models.ManyToManyField(
     'groups.Group', # model that this field is related to
-    related_name='workouts',
-    on_delete=models.CASCADE
+    related_name='workouts'
   )
-  exercises = models.ForeignKey(
+  exercises = models.ManyToManyField(
     'exercises.Exercise', # model that this field is related to
-    related_name='workouts',
-    on_delete=models.CASCADE
+    related_name='workouts'
   )
+
+  def __str__(self):
+    return f'{self.name}'

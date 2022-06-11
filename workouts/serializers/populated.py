@@ -1,7 +1,7 @@
 from .common import WorkoutSerializer
-from exercises.serializers.populated import PopulatedExercisesSerializer
-from groups.serializers.populated import PopulatedGroupSerializer
+from exercises.serializers.common import ExercisesSerializer
+from groups.serializers.common import GroupSerializer
 
 class PopulatedWorkoutSerializer(WorkoutSerializer):
-  groups = PopulatedGroupSerializer(many=True)
-  exercises = PopulatedExercisesSerializer(many=True)
+  groups = GroupSerializer(many=True)
+  exercises = ExercisesSerializer(many=True)

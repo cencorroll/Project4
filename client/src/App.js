@@ -1,18 +1,22 @@
-// eslint-disable-next-line no-unused-vars
-import logo from './logo.svg'
 import './App.css'
 import './styles/main.scss'
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ExercisesIndex from './components/Exercises/ExercisesIndex';
 import ExercisesShow from './components/Exercises/ExercisesShow';
+import Register from './components/Auth/Register'
+import PageNavBar from './PageNavBar'
+import Login from './components/Auth/Login'
 
 function App() {
   return (
     <BrowserRouter>
+      <PageNavBar />
       <Routes>
         <Route path='/exercises' element={<ExercisesIndex /> } />
-        <Route path='/exercises:id' element={<ExercisesShow /> } />
+        <Route path='/exercises/:id' element={<ExercisesShow /> } />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

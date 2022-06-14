@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import logo from './logo.svg'
 import './App.css'
+import './styles/main.scss'
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ExercisesIndex from './components/Exercises/ExercisesIndex';

@@ -78,6 +78,7 @@ class ExercisesDetailView(APIView):
     serialized_exercise = PopulatedExercisesSerializer(exercise)
     return Response(serialized_exercise.data, status.HTTP_200_OK)
 
+  # PUT - update an exercise
   def put(self, request, pk):
     exercise_to_update = self.get_exercise(pk=pk)
     deserialized_exercise = ExercisesSerializer(exercise_to_update, request.data)
@@ -89,6 +90,7 @@ class ExercisesDetailView(APIView):
     except Exception as e:
       return Response({'detail': str(e)}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+  # DELETE - delete an exercise
   def delete(self, request, pk, format=None):
         exercise_to_delete = self.get_exercise(pk)
         exercise_to_delete.delete()

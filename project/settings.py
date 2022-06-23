@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'exercises',
     'groups',
     'workouts',
-    'jwt_auth'
+    'jwt_auth',
+    'favorites'
 ]
 
 MIDDLEWARE = [

@@ -41,6 +41,21 @@ const ExercisesIndex = () => {
   }, [filters, exercises])
   filteredExercises.sort()
 
+  // //? Favorite button function
+  // const setTokenToLocalStorage = (token) => {
+  //   window.localStorage.setItem('fitness-app', token)
+  // }
+  // const handleLike = async (e) => {
+  //   e.preventDefault()
+  //   try {
+  //     const { data } = await axios.post('/api/auth/login/')
+  //     setTokenToLocalStorage(data.token)
+  //     console.log(data.token)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
   return (
     <>
       <Form>

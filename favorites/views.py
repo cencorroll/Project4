@@ -17,6 +17,8 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 class FavoriteWorkoutListView(APIView):
 
+  permission_classes = (IsAuthenticatedOrReadOnly, )
+
   def get(self, request):
     workouts = FavoriteWorkout.objects.all()
     serialized_favorite_workouts = PopulatedFavoriteWorkoutSerializer(workouts, many=True)

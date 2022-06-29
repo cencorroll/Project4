@@ -33,6 +33,28 @@ class WorkoutDetailView(APIView):
     except Workout.DoesNotExist as e:
       print(e)
       raise NotFound({'detail':str(e)})
+    
+  #? POST - Add own workout to the database
+  def post(self, request):
+    # to get the request body, we use the data key on the request object
+    # this process of passing python into a serializer to convert to a QuerySet is known as deserialization
+    deserialized_workout = WorkoutSerializer(data=request.data)
+    # serializers give us methods to check validity of the data being passed into the database
+    # what this does is checks the model and makes sure it passes that validation
+    # the method is is_valid() -> this raises an exception if it's not valid
+    try:
+      deserialized_workout.is_valid()
+      print(deserialized_workout.errors)
+      # if we get to this point then validation is passed
+      # if is_valid() fails then we throw an exception
+      deserialized_workout.save()
+      # if we get to this point the record has been saved
+      # when saving, a data key is added to the workouts instance that contains a python copy of the record that has just been created
+      return Response(deserialized_workout.data, status.HTTP_201_CREATED)
+    except Exception as e:
+      print(type(e))
+      print(e)
+      return Response({'detail':str(e)}, status.HTTP_422_UNPROCESSABLE_ENTITY)
 
   # GET - return one item from the Workouts table
   def get(self, request, pk):

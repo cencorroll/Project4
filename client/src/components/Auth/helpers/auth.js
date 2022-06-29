@@ -16,18 +16,8 @@ export const userIsAuthenticated = () => {
   return currentTime < payload.exp
 }
 
-export function userIsOwner(userId) {
+export const userIsOwner = (userId) => {
   const payload = getPayload()
-  if (!payload) {
-    return false
-  }
-  if (!userIsAuthenticated()) {
-    return false
-  }
-  return userId === payload.sub
+  return payload.sub === parseInt(userId)
 }
 
-export const getUserId = () => {
-  const payload = getPayload()
-  return payload && payload.sub
-}

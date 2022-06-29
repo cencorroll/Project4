@@ -14,18 +14,13 @@ export default function Login() {
     username: '',
     password: '',
   })
-
   const [ errors, setErrors ] = useState(false)
-
-  const setTokenToLocalStorage = (token) => {
-    window.localStorage.setItem('fitness-app', token)
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       const { data } = await axios.post('/api/auth/login/', formData)
-      setTokenToLocalStorage(data.token)
+      window.localStorage.setItem('fitness-app', data.token)
       console.log(data.token)
       navigate('/exercises')
     } catch (err) {

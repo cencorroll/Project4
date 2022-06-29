@@ -1,29 +1,55 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { getTokenFromLocalStorage, getUserId } from '../Helpers/auth'
+import { getTokenFromLocalStorage, getPayload, userIsAuthenticated } from './components/Auth/helpers/auth'
 import axios from 'axios'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 export default function Profile() {
 
-  const [profile, setProfile] = useState()
-  const [errors, setProfileErrors] = useState(false)
-  const [jobs, setJobs] = useState([])
-  const [jobErrors, setJobErrors] = useState(false)
+  const [profile, setProfile] = useState({})
+  const [errors, setErrors] = useState(false)
+  const navigate = useNavigate()
+  const { userId } = useParams()
+  const token = getTokenFromLocalStorage()
 
   useEffect(() => {
-    const getUser = async () => {
+    if (!token || !userIsAuthenticated(userId)) {
+      navigate('/')
+    }
+
+    const getProfile = async () => {
       try {
-        const { data } = await axios.get('/api/auth/user/', {
-          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+        const { data } = await axios.get(`/api/auth/user/${userId}/`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
         })
-        console.log(data)
-        setProfile(data)
-      } catch (error) {ß
-        setProfileErrors(true)
+        setProfile({ ...profile, ...data })
+      } catch (error) {
+        console.log(typeof userId)
+        console.log(userId)
+        console.log(error)
+        setErrors(true)
       }
     }
-    getUser()
+    getProfile()
   }, [])
+
+  //   const getUser = async () => {
+  //     try {
+  //       const { data } = await axios.get(`/api/auth/profile/${userId}/`, {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       })
+  //       console.log(token)
+  //       setProfile({ ...profile, ...data })
+  //     } catch (error) {
+  //       console.log(error)
+  //       setErrors(true)
+  //     }
+  //   }
+  //   getUser()
+  // }, [])
+
+  
 
   return (
     <div>Profile</div>

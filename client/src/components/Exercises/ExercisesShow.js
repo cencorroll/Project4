@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 const ExercisesShow = () => {
 
@@ -65,6 +66,7 @@ const ExercisesShow = () => {
                 <h2>Experts say:</h2>
                 <p>{exercise.expert_opinions}</p>
                 <hr />
+                <Button variant="primary">Add to your Workout</Button>
                 <Link to="/exercises" className='btn btn-danger'>Back to exercises</Link>
               </div>
             </>

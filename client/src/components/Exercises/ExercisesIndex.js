@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Container, Row, Col, Card, FormControl, Form, Button } from 'react-bootstrap'
+import { Container, Row, Col, Card, FormControl, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const ExercisesIndex = () => {
@@ -77,7 +77,6 @@ const ExercisesIndex = () => {
                       <Card.Title className='text-center mb-0'>{name}</Card.Title>
                     </Card.Body>
                   </Link>
-                  <Button variant="primary">Add to your Workout</Button>
                 </Card>
               </Col>
             )

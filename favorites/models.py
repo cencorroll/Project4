@@ -8,6 +8,9 @@ class FavoriteExercise(models.Model):
     'exercises.Exercise', # model that this field is related to
     related_name='favorites'
   )
+  
+  def __str__(self):
+    return f'{self.name}'
 
 class FavoriteWorkout(models.Model):
   name = models.CharField(max_length=100, default=None)

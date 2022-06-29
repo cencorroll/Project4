@@ -16,7 +16,6 @@ from .models import FavoriteWorkout
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 class FavoriteWorkoutListView(APIView):
-
   permission_classes = (IsAuthenticatedOrReadOnly, )
 
   def get(self, request):
@@ -24,8 +23,8 @@ class FavoriteWorkoutListView(APIView):
     serialized_favorite_workouts = PopulatedFavoriteWorkoutSerializer(workouts, many=True)
     return Response(serialized_favorite_workouts.data)
 
-class FavoriteWorkoutDetailView(APIView):
 
+class FavoriteWorkoutDetailView(APIView):
   permission_classes = (IsAuthenticatedOrReadOnly, )
 
   # Custom function
@@ -54,7 +53,6 @@ class FavoriteWorkoutDetailView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class FavoriteExercisesListView(APIView):
-
   permission_classes = (IsAuthenticatedOrReadOnly, ) # one-tuple requires trailing comma
 
   # ENDPOINTS & METHODS
@@ -73,7 +71,6 @@ class FavoriteExercisesListView(APIView):
 
 # FAVORITE EXERCISES
 class FavoriteExercisesDetailView(APIView):
-
   permission_classes = (IsAuthenticatedOrReadOnly, )
 
   # Custom function

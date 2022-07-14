@@ -3,8 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 // Bootstrap components
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
+import { Container, Row } from 'react-bootstrap'
 
 export default function Login() {
 

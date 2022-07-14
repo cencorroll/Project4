@@ -17,24 +17,8 @@ class WorkoutListView(APIView):
     workouts = Workout.objects.all()
     serialized_workouts = PopulatedWorkoutSerializer(workouts, many=True)
     return Response(serialized_workouts.data)
-
-class WorkoutDetailView(APIView):
-
-  permission_classes = (IsAuthenticatedOrReadOnly, )
-
-  # Custom function
-  # purpose of this function is to attempt to find a specific workout, thus returning the workout and throwing a 404 if it fails.
-  def get_workout(self, pk):
-    try:
-      # pk= is us detailing that we want to look in whatever column is the PRIMARY KEY column
-      # the second pk is the captured value
-      # this is the same as saying in SQL: WHERE id =1
-      return Workout.objects.get(pk=pk)
-    except Workout.DoesNotExist as e:
-      print(e)
-      raise NotFound({'detail':str(e)})
-    
-  #? POST - Add own workout to the database
+  
+    #? POST - Add own workout to the database
   def post(self, request):
     # to get the request body, we use the data key on the request object
     # this process of passing python into a serializer to convert to a QuerySet is known as deserialization
@@ -55,6 +39,22 @@ class WorkoutDetailView(APIView):
       print(type(e))
       print(e)
       return Response({'detail':str(e)}, status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+class WorkoutDetailView(APIView):
+
+  permission_classes = (IsAuthenticatedOrReadOnly, )
+
+  # Custom function
+  # purpose of this function is to attempt to find a specific workout, thus returning the workout and throwing a 404 if it fails.
+  def get_workout(self, pk):
+    try:
+      # pk= is us detailing that we want to look in whatever column is the PRIMARY KEY column
+      # the second pk is the captured value
+      # this is the same as saying in SQL: WHERE id =1
+      return Workout.objects.get(pk=pk)
+    except Workout.DoesNotExist as e:
+      print(e)
+      raise NotFound({'detail':str(e)})
 
   # GET - return one item from the Workouts table
   def get(self, request, pk):

@@ -10,7 +10,6 @@ import PageNavBar from './PageNavBar'
 import Login from './components/Auth/Login'
 import WorkoutIndex from './components/workouts/WorkoutIndex';
 import WorkoutShow from './components/workouts/WorkoutShow';
-import Nutrition from './components/Calories/Nutrition';
 import WorkoutAdd from './components/workouts/WorkoutAdd';
 import Profile from './Profile';
 import Home from './Home';

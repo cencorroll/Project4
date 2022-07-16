@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Container, Row, Col, Card, FormControl, Form, Button } from 'react-bootstrap'
+import { Row, FormControl, Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const WorkoutIndex = () => {
@@ -42,6 +42,7 @@ const WorkoutIndex = () => {
     }
   }, [filters, workouts])
   filteredWorkouts.sort()
+  
   return (
     <>
       <Form>

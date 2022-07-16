@@ -1,11 +1,13 @@
 import React from 'react'
 import { Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import ExercisesIndex from './components/Exercises/ExercisesIndex'
 
 export default function Home() {
 
   return (
-    <main className='homepage'>
+    <>
+      <main className='homepage'>
       <section className='main-hp'>
         <div className='banner-hp'>
           <div className='links-hp'>
@@ -13,11 +15,11 @@ export default function Home() {
             <Nav.Link className='workoutslink' as={Link} to='/workouts'>Workouts</Nav.Link>
           </div>
         </div>
-        <div className='created-by'>
-          <h3>Created by Abdallah Harun</h3>
-          {/* Github Icon */}
+        <div className='exercise-index'>
+          <ExercisesIndex />
         </div>
       </section>
     </main>
+    </>
   )
 }

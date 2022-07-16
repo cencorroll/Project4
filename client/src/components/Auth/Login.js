@@ -19,9 +19,9 @@ export default function Login() {
     e.preventDefault()
     try {
       const { data } = await axios.post('/api/auth/login/', formData)
-      window.localStorage.setItem('fitness-app', data.token)
+      window.localStorage.setItem('token', data.token)
       console.log(data.token)
-      navigate('/exercises')
+      navigate('/')
     } catch (err) {
       console.log(err)
       setErrors(true)

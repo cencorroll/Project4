@@ -23,9 +23,6 @@ export default function WorkoutAdd() {
     getExercises()
   }, [])
 
-  // const handleAdd = () => {
-  //   formData.workout.push()
-  // }
 
   const handleOptions = () => {
     setFormData({ ...formData, exercises: exercises.map((exercise) => exercise.id) })

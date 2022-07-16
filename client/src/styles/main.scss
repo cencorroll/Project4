@@ -44,4 +44,10 @@
 
 .pagenavbar {
   max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-container {
+  height: 100px;
 }

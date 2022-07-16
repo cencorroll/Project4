@@ -1,5 +1,5 @@
 export const getTokenFromLocalStorage = () => {
-  return window.localStorage.getItem('fitness-app')
+  return window.localStorage.getItem('token')
 }
 
 const getPayload = () => {

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const ExercisesIndex = () => {
 
   const [exercises, setExercises] = useState([])
-  // const [errors, setErrors] = useState(false)
+  const [errors, setErrors] = useState(false)
   const [filters, setFilters] = useState({
     exercise: 'All',
     searchTerm: '',
@@ -21,6 +21,7 @@ const ExercisesIndex = () => {
         setExercises(data)
       } catch (error) {
         console.log(error.response.data)
+        setErrors(true)
       }
     }
     getExercises()
@@ -66,23 +67,33 @@ const ExercisesIndex = () => {
 
       <Container>
         <Row>
-          {filteredExercises.map((exercise) => {
-            const { id, name, image } = exercise
-            return (
-              <Col key={id} md='6' lg='4' className='mb-4'>
-                <Card style={{ width: '18rem' }}>
-                  <Link to={`/exercises/${id}`}>
-                    <Card.Img className='exercises-index-image' variant="top" src={image} />
-                    <Card.Body className='bd-light'>
-                      <Card.Title className='text-center mb-0'>{name}</Card.Title>
-                    </Card.Body>
-                  </Link>
-                </Card>
-              </Col>
-            )
-          })}
+          {exercises ?
+            <>
+              {filteredExercises.map((exercise) => {
+                const { id, name, image } = exercise
+                return (
+                  <Col key={id} md='6' lg='4' className='mb-4'>
+                    <Card style={{ width: '18rem' }}>
+                      <Link to={`/exercises/${id}`}>
+                        <Card.Img className='exercises-index-image' variant="top" src={image} />
+                        <Card.Body className='bd-light'>
+                          <Card.Title className='text-center mb-0'>{name}</Card.Title>
+                        </Card.Body>
+                      </Link>
+                    </Card>
+                  </Col>
+                )
+              })}
+            </>
+            :
+            <div className='text-center'>
+              {errors ? 'Something went wrong! Please try again later!' : <h2>Loading...</h2>}
+            </div>
+          }
         </Row>
       </Container>
+      :
+
     </>
   )
 }

@@ -13,8 +13,10 @@ import WorkoutShow from './components/workouts/WorkoutShow';
 import WorkoutAdd from './components/workouts/WorkoutAdd';
 import Profile from './Profile';
 import Home from './Home';
+import NotFound from './components/NotFound';
 
 function App() {
+
   return (
     <BrowserRouter>
     {/* PageNavBar is above routes so that it can be displayed on each page */}
@@ -29,6 +31,7 @@ function App() {
         <Route path='/workouts/:id' element={<WorkoutShow /> } />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   ); 

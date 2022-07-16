@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getTokenFromLocalStorage, getPayload, userIsAuthenticated } from './components/Auth/helpers/auth'
 import axios from 'axios'
 import { useParams, Link, useNavigate } from 'react-router-dom'
@@ -7,14 +7,13 @@ export default function Profile() {
 
   const [profile, setProfile] = useState({})
   const [errors, setErrors] = useState(false)
-  const navigate = useNavigate()
   const { userId } = useParams()
   const token = getTokenFromLocalStorage()
 
   useEffect(() => {
-    if (!token || !userIsAuthenticated(userId)) {
-      navigate('/')
-    }
+    // if (!token || !userIsAuthenticated(userId)) {
+    //   navigate('/')
+    // }
 
     const getProfile = async () => {
       try {

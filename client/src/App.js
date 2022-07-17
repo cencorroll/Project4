@@ -14,6 +14,7 @@ import WorkoutAdd from './components/workouts/WorkoutAdd';
 import Profile from './Profile';
 import Home from './Home';
 import NotFound from './components/NotFound';
+// import GroupsExercises from './components/Exercises/GroupsExercises';
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
         <Route path='/workouts/add' element={<WorkoutAdd /> } />
         <Route path='/exercises/:id' element={<ExercisesShow /> } />
         <Route path='/workouts/:id' element={<WorkoutShow /> } />
+        {/* for improvements */}
+        {/* <Route path='/groups/' element={<GroupsExercises /> } />
+        <Route path='/groups/:id' element={<GroupsExercises /> } /> */}
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />

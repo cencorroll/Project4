@@ -36,7 +36,7 @@ export default function PageNavBar(props) {
           variant="h6"
           sx={{ my: 2 }}
         >
-          PORTFOLIO
+          Fitness Database
         </Typography>
         <Divider />
         <Stack
@@ -60,31 +60,6 @@ export default function PageNavBar(props) {
   const container = window !== undefined ? () => window().document.body : undefined
 
   return (
-
-    //? Bootstrap navbar
-    // <Navbar bg="light" expand="lg">
-    //   <Navbar.Collapse id="basic-navbar-nav">
-    //     <div className='pagenavbar'>
-    //       <Nav className="me-auto">
-    //         <Navbar.Brand as={Link} to="/">Home</Navbar.Brand>
-    //       </Nav>
-    //       <Nav className='me-auto'>
-    //         {userIsAuthenticated() ?
-    //           <>
-    //             <Nav.Link onClick={handleLogOut}>Logout</Nav.Link>
-    //             <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-    //             <Nav.Link as={Link} to="/workouts/add">Add your Workout</Nav.Link>
-    //           </>
-    //           :
-    //           <>
-    //             <Nav.Link as={Link} to="/register">Register</Nav.Link>
-    //             <Nav.Link as={Link} to="/login">Login</Nav.Link>
-    //           </>
-    //         }
-    //       </Nav>
-    //     </div>
-    //   </Navbar.Collapse>
-    // </Navbar>
 
     <Box className='navbar-container' sx={{ display: 'flex' }}>
       <AppBar style={{ backgroundColor: '#707070', height: '0' }}>
@@ -112,6 +87,7 @@ export default function PageNavBar(props) {
               <Button
                 style={{
                   color: 'white',
+                  fontSize: '1.3em'
                 }}>
                 Home
               </Button>
@@ -128,7 +104,9 @@ export default function PageNavBar(props) {
                 >
                   <Button
                     style={{
-                      color: 'white'
+                      color: 'white',
+                      fontSize: '1em',
+                      marginRight: '1em'
                     }}>
                     Add your workout
                   </Button>
@@ -137,7 +115,8 @@ export default function PageNavBar(props) {
                 <Button
                   onClick={handleLogOut}
                   style={{
-                    color: 'white'
+                    color: 'white',
+                    fontSize: '1em'
                   }}>
                   LOG OUT
                 </Button>
@@ -151,14 +130,14 @@ export default function PageNavBar(props) {
                     style={{
                       color: 'white',
                     }}>
-                    <AccountCircleIcon />
+                    <AccountCircleIcon style={{ fontSize: '20px' }}/>
                   </Button>
                 </Link>
               </>
               :
               <>
-                <Link to="/register"><Button>Register</Button></Link>
-                <Link to="/login"><Button>Login</Button></Link>
+                <Link to="/register"><Button style={{color: 'white', fontSize: '1.3em' }}>Register</Button></Link>
+                <Link to="/login"><Button style={{color: 'white', fontSize: '1.3em' }}>Login</Button></Link>
               </>
             }
             <Button

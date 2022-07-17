@@ -72,7 +72,7 @@ class ExercisesDetailView(APIView):
       raise NotFound({'detail':str(e)})
 
   # GET - return one item from the Exercises table
-  def get(self, _request, pk):
+  def get(self, request, pk):
     exercise = self.get_exercise(pk)
     print('exercise ->', exercise)
     serialized_exercise = PopulatedExercisesSerializer(exercise)

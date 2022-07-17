@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Container, Row, Col, Card, FormControl, Form } from 'react-bootstrap'
+// import { Container, Row, Col, Card } from 'react-bootstrap'
+import { Container, TextField, Typography, Card, CardHeader, CardMedia, CardContent, CardActions, IconButton } from '@mui/material'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import ShareIcon from '@mui/icons-material/Share'
+
 import { Link } from 'react-router-dom'
 
 const ExercisesIndex = () => {
@@ -31,11 +35,12 @@ const ExercisesIndex = () => {
   const handleChange = (e) => {
     setFilters({ ...filters, [e.target.name]: e.target.value })
   }
+
   useEffect(() => {
     if (exercises.length) {
       const regexSearch = new RegExp(filters.searchTerm, 'i')
       const filtered = exercises.filter(exercise => {
-        return regexSearch.test(exercise.name) || regexSearch.test(exercise.groups) || (filters.name === 'All')
+        return regexSearch.test(exercise.name) && (exercise.groups === filters.group || filters.group === 'All')
       })
       setFilteredExercises(filtered)
     }
@@ -59,41 +64,81 @@ const ExercisesIndex = () => {
 
   return (
     <>
-      <Form>
-        <Form.Group className='search'>
-          <FormControl className='search-bar' type="search" name="searchTerm" value={filters.searchTerm} placeholder="Find an exercise" onChange={handleChange} />
-        </Form.Group>
-      </Form>
-
-      <Container>
-        <Row>
-          {exercises ?
-            <>
-              {filteredExercises.map((exercise) => {
-                const { id, name, image } = exercise
-                return (
-                  <Col key={id} md='6' lg='4' className='mb-4'>
-                    <Card style={{ width: '18rem' }}>
-                      <Link to={`/exercises/${id}`}>
-                        <Card.Img className='exercises-index-image' variant="top" src={image} />
-                        <Card.Body className='bd-light'>
-                          <Card.Title className='text-center mb-0'>{name}</Card.Title>
-                        </Card.Body>
-                      </Link>
-                    </Card>
-                  </Col>
-                )
-              })}
-            </>
-            :
-            <div className='text-center'>
-              {errors ? 'Something went wrong! Please try again later!' : <h2>Loading...</h2>}
-            </div>
-          }
-        </Row>
+    <Container maxWidth='lg'>
+      <TextField
+        id='outlined-basic'
+        label={<Typography variant="headline" component="h4"> Find an Exercise... </Typography>}
+        variant='outlined'
+        fullWidth
+        name='searchTerm'
+        autoComplete='off'
+        onChange={handleChange}
+        value={filters.searchTerm}
+        inputProps={{ style: { fontSize: 20 } }}
+      />
       </Container>
-      :
 
+      <div className='exercise-grid'>
+        {exercises ?
+          <>
+            {filteredExercises.map((exercise) => {
+              const { id, name, image, groups } = exercise
+              return (
+                <Card className='exercise-card'>
+                  <CardHeader
+                    title={name}
+                  />
+                  <Link to={`/exercises/${id}`}>
+                    <CardMedia
+                      component="img"
+                      height="194"
+                      image={image}
+                      alt="Paella dish"
+                      className='card-img'
+                    />
+                  </Link>
+                  <CardContent>
+                    <Typography
+                      variant="headline"
+                      component='h4'
+                      color="text.secondary"
+                    >
+                      {/* Link to page of all exercises with that group */}
+                      {
+                        groups.map((group) => {
+                          const { id, name } = group
+                          return (
+                            <Link key={id} to={`/groups/${name}`}>
+                              <div key={id}>
+                                {name}
+                              </div>
+                            </Link>
+                          )
+                        })
+                      }
+                    </Typography>
+                    <Link to={`/exercises/${id}`}>
+                      <Typography paragraph>More information</Typography>
+                    </Link>
+                  </CardContent>
+                  <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                      <FavoriteIcon />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                      <ShareIcon />
+                    </IconButton>
+                  </CardActions>
+                </Card>
+              )
+            })}
+          </>
+          :
+          <div className='text-center'>
+            {errors ? 'Something went wrong! Please try again later!' : <h2>Loading...</h2>}
+          </div>
+        }
+      </div>
     </>
   )
 }

@@ -2,6 +2,57 @@
   width: 200px;
 }
 
+.exercise-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 80%;
+  padding: 20px;
+  .exercise-card {
+    .card-img {
+      width: 200px;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+  }
+}
+
+.workout-grid {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+  padding: 20px;
+  .workout-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    .workout-link {
+      text-decoration: none;
+      color: black;
+    }
+    .workout-card-image {
+      width: 200px;
+    }
+    .workout-exercises {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      .card {
+        max-width: 100%;
+        margin: 20px;
+        padding: 20px;
+      }
+    }
+  }
+}
+
+
 .homepage {
   display: flex;
   justify-content: center;
@@ -51,3 +102,4 @@
 .navbar-container {
   height: 100px;
 }
+

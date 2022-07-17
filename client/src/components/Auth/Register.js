@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Box, Typography, TextField, Grid, Button, CssBaseline, Avatar, } from '@mui/material'
 
 export default function Register() {
+
   const navigate = useNavigate()
-  const [ formData, setFormData ] = useState({
+  const [formData, setFormData] = useState({
     username: '',
     email: '',
     first_name: '',
     last_name: '',
     password: '',
-    passwordConfirmation: '',
+    password_confirmation: '',
     profile_image: ''
   })
 
-  const [ errors, setErrors ] = useState({})
+  const [errors, setErrors] = useState({})
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -25,7 +26,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post('/api/auth/register/', formData)
+      await axios.post('/api/auth/register/', formData)
       navigate('/login')
     } catch (error) {
       console.log(error)
@@ -35,44 +36,231 @@ export default function Register() {
   }
 
   return (
-    <section className="form-page">
-      <Container>
-        <Row>
-          <form className='col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mb-5' onSubmit={handleSubmit}>
-            <h1>Register</h1>
-            {/* Username */}
-            <label htmlFor="username">Username</label>
-            <input type="text" name="username" className='input' placeholder='Username' value={formData.username} onChange={handleChange} />
-            {errors.username && <p className='text-danger'>{errors.username}</p>}
-            {/* Email */}
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" className='input' placeholder='Email' value={formData.email} onChange={handleChange} />
-            {errors.email && <p className='text-danger'>{errors.email}</p>}
-            {/* First Name */}
-            <label htmlFor="first_name">First Name</label>
-            <input type="first_name" name="first_name" className='input' placeholder='first_name' value={formData.first_name} onChange={handleChange} />
-            {errors.first_name && <p className='text-danger'>{errors.first_name}</p>}
-            {/* Last Name */}
-            <label htmlFor="last_name">Last Name</label>
-            <input type="last_name" name="last_name" className='input' placeholder='last_name' value={formData.last_name} onChange={handleChange} />
-            {errors.last_name && <p className='text-danger'>{errors.last_name}</p>}
-            {/* Password */}
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" className='input' placeholder='Password' value={formData.password} onChange={handleChange} />
-            {errors.password && <p className='text-danger'>{errors.password}</p>}
-            {/* Password Confirmation */}
-            <label htmlFor="password_confirmation">Password Confirmation</label>
-            <input type="password" name="password_confirmation" className='input' placeholder='Password Confirmation' value={formData.password_confirmation} onChange={handleChange} />
-            {errors.password_confirmation && <p className='text-danger'>{errors.password_confirmation}</p>}
-            {/* Image Upload*/}
-            <label htmlFor="profile_image">Profile Image</label>
-            <input type="profile_image" name="profile_image" className='input' placeholder='Image link' value={formData.profile_image} onChange={handleChange} />
-            {errors.profile_image && <p className='text-danger'>{errors.profile_image}</p>}
-            {/* Submit */}
-            <button type="submit" className="btn w-100">Register</button>
-          </form>
-        </Row>
-      </Container>
-    </section>
+
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 4,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Avatar sx={{ mb: '20px' }} />
+
+        <Typography component="h1" variant="h5" style={{ fontSize: '2.3em' }}>
+          Create an Account
+        </Typography>
+
+        <Box component="form" autoComplete='off' onSubmit={handleSubmit} sx={{ mt: 1 }} style={{ width: '100%' }}>
+
+
+          {/* Username */}
+          <Grid  xs={12}>
+            <TextField
+              name="username"
+              required
+              fullWidth
+              id="username"
+              label={<Typography variant="headline" component="h4"> Username </Typography>}
+              autoFocus
+              value={formData.username}
+              onChange={handleChange}
+              inputProps={{ style: { fontSize: 15 } }}
+              sx={{ mt: '10px' }}
+            />
+            {errors.username
+              ?
+              <Grid  xs={12}>
+                <Container sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Typography sx={{ color: 'red' }}>{errors.username}</Typography>
+                </Container>
+              </Grid>
+              :
+              <div style={{ height: '0' }}></div>
+            }
+          </Grid>
+
+
+          {/* Email */}
+          <Grid  xs={12}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label={<Typography variant="headline" component="h4"> Email </Typography>}
+              name="email"
+              autoFocus
+              value={formData.email}
+              onChange={handleChange}
+              inputProps={{ style: { fontSize: 15 } }}
+              sx={{ mt: '10px' }}
+            />
+            {errors.email
+              ?
+              <Grid  xs={12}>
+                <Container sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Typography sx={{ color: 'red' }}>{errors.email}</Typography>
+                </Container>
+              </Grid>
+              :
+              <div style={{ height: '0' }}></div>
+            }
+          </Grid>
+
+
+          {/* First Name */}
+          <Grid  xs={12}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name='first_name'
+              label={<Typography variant="headline" component="h4"> First Name </Typography>}
+              type="first-name"
+              id="first-name"
+              value={formData.first_name}
+              onChange={handleChange}
+              inputProps={{ style: { fontSize: 15 } }}
+              sx={{ mt: '10px' }}
+            />
+            {errors.first_name
+              ?
+              <Grid  xs={6}>
+                <Container sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Typography sx={{ color: 'red' }}>{errors.first_name}</Typography>
+                </Container>
+              </Grid>
+              :
+              <div style={{ height: '0' }}></div>
+            }
+          </Grid>
+
+
+          {/* Last Name */}
+          <Grid  xs={6}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name='last_name'
+              label={<Typography variant="headline" component="h4"> Last Name </Typography>}
+              type="last-name"
+              id="last-name"
+              value={formData.last_name}
+              onChange={handleChange}
+              inputProps={{ style: { fontSize: 15 } }}
+              sx={{ mt: '10px' }}
+            />
+            {errors.last_name
+              ?
+              <Grid  xs={6}>
+                <Container sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Typography sx={{ color: 'red' }}>{errors.last_name}</Typography>
+                </Container>
+              </Grid>
+              :
+              <div style={{ height: '0' }}></div>
+            }
+          </Grid>
+
+
+          {/* Password */}
+          <Grid  xs={6}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label={<Typography variant="headline" component="h4"> Password </Typography>}
+              type="password"
+              id="password"
+              value={formData.password}
+              onChange={handleChange}
+              inputProps={{ style: { fontSize: 15 } }}
+              sx={{ mt: '20px' }}
+            />
+            {errors.password
+              ?
+              <Grid  xs={6}>
+                <Container sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Typography sx={{ color: 'red' }}>{errors.password}</Typography>
+                </Container>
+              </Grid>
+              :
+              <div style={{ height: '0' }}></div>
+            }
+          </Grid>
+
+
+          {/* Password Confirmation */}
+          <Grid  xs={6}>
+            <TextField
+              required
+              fullWidth
+              name="password_confirmation"
+              label={<Typography variant="headline" component="h4"> Password Confirmation </Typography>}
+              type="password"
+              id="password_confirmation"
+              value={formData.password_confirmation}
+              onChange={handleChange}
+              inputProps={{ style: { fontSize: 15 } }}
+              sx={{ mt: '10px' }}
+            />
+            {errors.password_confirmation
+              ?
+              <Grid  xs={6}>
+                <Container sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Typography sx={{ color: 'red' }}>{errors.password_confirmation}</Typography>
+                </Container>
+              </Grid>
+              :
+              <div style={{ height: '0' }}></div>
+            }
+          </Grid>
+
+
+          {/* Profile Image */}
+          <Grid  xs={12}>
+            <TextField
+              required
+              fullWidth
+              name="profile_image"
+              label={<Typography variant="headline" component="h4"> Profile Image </Typography>}
+              type="profile-image"
+              id="profile-image"
+              value={formData.profile_image}
+              onChange={handleChange}
+              inputProps={{ style: { fontSize: 15 } }}
+              sx={{ mt: '10px' }}
+            />
+            {errors.profile_image
+              ?
+              <Grid  xs={12}>
+                <Container sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Typography sx={{ color: 'red' }}>{errors.profile_image}</Typography>
+                </Container>
+              </Grid>
+              :
+              <div style={{ height: '0' }}></div>
+            }
+          </Grid>
+
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            style={{ fontSize: '1.5em' }}
+          >
+            Sign Up
+          </Button>
+
+        </Box>
+      </Box>
+    </Container>
   )
 }

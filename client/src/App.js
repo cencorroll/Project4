@@ -1,19 +1,19 @@
 import './App.css'
 import './styles/main.scss'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import ExercisesIndex from './components/Exercises/ExercisesIndex';
-import ExercisesShow from './components/Exercises/ExercisesShow';
+import ExercisesIndex from './components/Exercises/ExercisesIndex'
+import ExercisesShow from './components/Exercises/ExercisesShow'
 import Register from './components/Auth/Register'
 import PageNavBar from './PageNavBar'
 import Login from './components/Auth/Login'
-import WorkoutIndex from './components/workouts/WorkoutIndex';
-import WorkoutShow from './components/workouts/WorkoutShow';
-import WorkoutAdd from './components/workouts/WorkoutAdd';
-import Profile from './components/Profile';
-import Home from './Home';
-import NotFound from './components/NotFound';
+import WorkoutIndex from './components/workouts/WorkoutIndex'
+import WorkoutShow from './components/workouts/WorkoutShow'
+import WorkoutAdd from './components/workouts/WorkoutAdd'
+import Profile from './components/Profile'
+import Home from './Home'
+import NotFound from './components/NotFound'
 // import GroupsExercises from './components/Exercises/GroupsExercises';
 
 function App() {

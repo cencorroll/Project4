@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { getTokenFromLocalStorage } from '../Auth/helpers/auth'
+import { getTokenFromLocalStorage } from '../auth/helpers/auth'
 import Select from 'react-select'
 
 import { Container, Row } from 'react-bootstrap'

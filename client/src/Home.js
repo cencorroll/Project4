@@ -1,7 +1,6 @@
 import React from 'react'
 import { Nav } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import ExercisesIndex from './components/Exercises/ExercisesIndex'
 
 export default function Home() {
 

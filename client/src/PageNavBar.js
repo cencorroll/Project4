@@ -9,7 +9,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { AppBar, Box, Divider, Drawer, IconButton, Toolbar, Typography, Button, Stack } from '@mui/material'
 // import { Nav, Navbar } from 'react-bootstrap'
 
-import { userIsAuthenticated } from './components/Auth/helpers/auth'
+import { userIsAuthenticated } from './components/auth/helpers/auth'
 
 const drawerWidth = 240
 

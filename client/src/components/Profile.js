@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getTokenFromLocalStorage, getPayload, userIsAuthenticated } from './Auth/helpers/auth'
+import { getTokenFromLocalStorage, getPayload, userIsAuthenticated } from './auth/helpers/auth'
 import axios from 'axios'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 

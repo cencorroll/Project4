@@ -92,9 +92,9 @@ const WorkoutIndex = () => {
               return (
                 <Card className='workout-container'>
                   <Link className='workout-link' to={`/workouts/${id}`}>
-                    <CardHeader
-                      title={name}
-                    />
+                    <Typography gutterBottom variant="h4" component="div">
+                      {name}
+                    </Typography>
                   </Link>
                   <CardContent>
                   </CardContent>
@@ -127,10 +127,10 @@ const WorkoutIndex = () => {
                   </Collapse>
                   <CardActions disableSpacing>
                     <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
+                      <FavoriteIcon sx={{ fontSize: "40px" }} />
                     </IconButton>
                     <IconButton aria-label="share">
-                      <ShareIcon />
+                      <ShareIcon sx={{ fontSize: "40px" }} />
                     </IconButton>
                     <ExpandMore
                       expand={expanded}
@@ -138,7 +138,7 @@ const WorkoutIndex = () => {
                       aria-expanded={expanded}
                       aria-label="show more"
                     >
-                      <ExpandMoreIcon />
+                      <ExpandMoreIcon sx={{ fontSize: "40px" }} />
                     </ExpandMore>
                   </CardActions>
                 </Card>

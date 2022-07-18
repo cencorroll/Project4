@@ -10,7 +10,7 @@ class Workout(models.Model):
   )
   owner = models.ForeignKey(
     'jwt_auth.User',
-    related_name='reviews',
+    related_name='workouts',
     on_delete=models.CASCADE
   )
 

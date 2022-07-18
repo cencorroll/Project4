@@ -16,7 +16,6 @@ export default function Home() {
           </div>
         </div>
         <div className='exercise-index'>
-          <ExercisesIndex />
         </div>
       </section>
     </main>

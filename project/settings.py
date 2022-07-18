@@ -93,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # this specifies postgres as the db to use
         'NAME': env('DATABASE_NAME'), # name of db, needs to be created manually 'createdb record-store'
         'HOST': 'localhost', # host where our database server is running, in our case localhost
-        'PORT': 5432 # this is the port oir postgres server is running on
+        'PORT': 5432 # this is the port our postgres server is running on
     }
 }
 

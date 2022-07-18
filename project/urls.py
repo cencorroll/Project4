@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.urls import path, include, re_path # <-- added this new import re_path
+from .views import index # <-- also new
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,5 +24,7 @@ urlpatterns = [
     path('api/groups/', include('groups.urls')),
     path('api/workouts/', include('workouts.urls')),
     path('api/favorites/', include('favorites.urls')),
-    path('api/auth/', include('jwt_auth.urls'))
+    path('api/auth/', include('jwt_auth.urls')),
+    re_path(r'^.*$', index) # <-- have this come last using re path.
+    
 ]

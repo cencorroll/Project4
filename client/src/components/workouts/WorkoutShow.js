@@ -34,7 +34,7 @@ export default function WorkoutShow() {
   useEffect(() => {
     const getWorkout = async () => {
       try {
-        const { data } = await axios.get(`/api/workouts/${id}`)
+        const { data } = await axios.get(`/api/workouts/${id}/`)
         console.log(data)
         setWorkout(data)
       } catch (error) {

@@ -15,7 +15,7 @@ const ExercisesShow = () => {
   useEffect(() => {
     const getExercise = async () => {
       try {
-        const { data } = await axios.get(`/api/exercises/${id}`)
+        const { data } = await axios.get(`/api/exercises/${id}/`)
         console.log(data)
         setExercise(data)
       } catch (error) {

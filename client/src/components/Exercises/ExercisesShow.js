@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, Link } from 'react-router-dom'
-import { Button } from 'react-bootstrap'
+import { Box, Paper, Typography, Button } from '@mui/material'
 
 const ExercisesShow = () => {
 
@@ -28,54 +28,101 @@ const ExercisesShow = () => {
 
   return (
     <>
-      <div>
-        {exercise ?
-          <>
-            <div>
+      {exercise ?
+        <>
+          <div className='exercise-show-page'>
+            <div className='header-section'>
               <h1>{exercise.name}</h1>
-              <hr />
+              <div className='subheader-text'>Muscle groups:
+                {exercise.groups.map((group) => {
+                  const { name } = group
+                  return (
+                    <div className='group-text'>{name}</div>
+                  )
+                })}
+              </div>
+              <div className='sets'>{exercise.sets} sets</div>
             </div>
-            <div>
-              <iframe width="1280" height="720" src={`https://www.youtube.com/embed/${exercise.video}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
+            <hr />
+
+            <div className='boxes'>
+              <Box
+                className='exercise-show-box'
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  '& > :not(style)': {
+                    m: 2,
+                    maxWidth: '100%',
+                    width: '600px',
+                    padding: '1.5em'
+                  },
+                }}
+              >
+                <Paper elevation={3}>
+                  <Typography style={{ fontSize: '2em' }}>What is it?</Typography>
+                  <Typography style={{ fontSize: '1.5em' }}>{exercise.description}</Typography>
+                </Paper>
+              </Box>
+
+              <Box
+                className='exercise-show-box'
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  '& > :not(style)': {
+                    m: 2,
+                    maxWidth: '100%',
+                    width: '600px',
+                    padding: '1.5em'
+                  },
+                }}
+              >
+                <Paper elevation={3}>
+                  <Typography style={{ fontSize: '2em' }}>How?</Typography>
+                  <Typography style={{ fontSize: '1.5em' }}>{exercise.how_to_do}</Typography>
+                </Paper>
+              </Box>
             </div>
-            <div md="6">
-              <p>Muscle Groups: {exercise.groups.map((group) => {
-                const { name } = group
-                return (
-                  <div key={id} md='6' lg='4' className='mb-4'>
-                    {/* <Link to={`/exercises/${id}`}> */}
-                    <h1>
-                      {name}
-                    </h1>
-                    {/* </Link> */}
-                  </div>
-                )
-              })}</p>
-              <hr />
-              <h2>Description</h2>
-              <p>{exercise.description}</p>
-              <hr />
-              <h2>How to do:</h2>
-              <p>{exercise.how_to_do}</p>
-              <hr />
-              <img alt={`This is a ${exercise.name}`} src={exercise.image} />
-              <hr />
-              <h2>Sets: </h2>
-              <p>{exercise.sets}</p>
-              <hr />
-              <h2>Experts say:</h2>
-              <p>{exercise.expert_opinions}</p>
-              <hr />
-              <Button variant="primary">Add to your Workout</Button>
-              <Link to="/exercises" className='btn btn-danger'>Back to exercises</Link>
+
+
+            <div className='media'>
+              <div className='youtube'>
+                <iframe width="640" height="360" src={`https://www.youtube.com/embed/${exercise.video}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              </div>
             </div>
-          </>
-          :
-          <div className='text-center'>
-            {errors ? 'Something went wrong! Please try again later!' : <h2>Loading...</h2>}
+
+            <hr />
+
+            <Box
+                className='exercise-show-box'
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  '& > :not(style)': {
+                    m: 2,
+                    maxWidth: '100%',
+                    padding: '1.5em'
+                  },
+                }}
+              >
+                <Paper elevation={3}>
+                  <Typography style={{ fontSize: '2em' }}>Abdallah says:</Typography>
+                  <Typography style={{ fontSize: '1.5em' }}>{exercise.expert_opinions}</Typography>
+                </Paper>
+              </Box>
+
+
+            <Button>Add to your Workout</Button>
+            <Link to="/exercises" ><Button>Back to exercises</Button></Link>
           </div>
-        }
-      </div>
+        </>
+        :
+        <div className='text-center'>
+          {errors ? 'Something went wrong! Please try again later!' : <h2>Loading...</h2>}
+        </div>
+      }
     </>
   )
 }

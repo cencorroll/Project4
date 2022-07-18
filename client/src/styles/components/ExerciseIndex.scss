@@ -1,0 +1,21 @@
+.exercises-index-image {
+  width: 200px;
+}
+
+.exercise-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 80%;
+  padding: 20px;
+  .exercise-card {
+    .card-img {
+      width: 200px;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+  }
+}

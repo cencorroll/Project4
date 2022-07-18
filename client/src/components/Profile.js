@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { getTokenFromLocalStorage, getPayload, userIsAuthenticated } from './components/Auth/helpers/auth'
+import { getTokenFromLocalStorage, getPayload, userIsAuthenticated } from './Auth/helpers/auth'
 import axios from 'axios'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 
@@ -48,9 +48,12 @@ export default function Profile() {
   //   getUser()
   // }, [])
 
-  
+
 
   return (
-    <div>Profile</div>
+    <div className='profile-page'>
+      <h1>Coming Soon...</h1>
+      <img alt='profile excalidraw screenshot' src={require('../excalidraw-profile.png')} />
+    </div>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, Link } from 'react-router-dom'
-import { Typography, Card, CardHeader, CardContent, CardMedia, CardActions, Collapse, IconButton, Box, Paper } from '@mui/material'
+import { Typography, Card, CardContent, CardMedia, CardActions, Collapse, IconButton, Box, Paper } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import ShareIcon from '@mui/icons-material/Share'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
